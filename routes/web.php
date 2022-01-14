@@ -20,16 +20,15 @@ Route::get('/', function () {
 
 Route::prefix('seller')->group(function(){
     # CREATE:
-    Route::get('/create', [SellerController::class, 'create'])->name('seller-create');
+    // Route::get('/create', [SellerController::class, 'create'])->name('seller-create');
     Route::post('/', [SellerController::class, 'store'])->name('seller-store');
 
     # RETRIEVE:
     Route::get('/', [SellerController::class, 'index'])->name('seller-index');
-//     Route::get('/', "<h1>hi</h1>");
 
     # UPDATE:
-    Route::get('edit/{id}', [SellerController::class, 'edit'])->where('id', '[0-9]+')
-    ->name('seller-edit');
+    // Route::get('edit/{id}', [SellerController::class, 'edit'])->where('id', '[0-9]+')
+    // ->name('seller-edit');
     Route::put('/{id}', [SellerController::class, 'update'])->where('id', '[0-9]+')
     ->name('seller-update');
 
