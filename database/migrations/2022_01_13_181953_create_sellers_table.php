@@ -15,7 +15,7 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 40);
         });
     }
 
