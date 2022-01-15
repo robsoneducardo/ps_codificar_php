@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SellerController;
 
 /*
@@ -35,4 +36,23 @@ Route::prefix('seller')->group(function(){
     # DELETE:
     Route::delete('/{id}', [SellerController::class, 'destroy'])->where('id', '[0-9]+')
     ->name('seller-destroy');
+});
+
+Route::prefix('customer')->group(function(){
+    # CREATE:
+    // Route::get('/create', [CustomerController::class, 'create'])->name('customer-create');
+    Route::post('/', [CustomerController::class, 'store'])->name('customer-store');
+
+    # RETRIEVE:
+    Route::get('/', [CustomerController::class, 'index'])->name('customer-index');
+
+    # UPDATE:
+    // Route::get('edit/{id}', [CustomerController::class, 'edit'])->where('id', '[0-9]+')
+    // ->name('customer-edit');
+    Route::put('/{id}', [CustomerController::class, 'update'])->where('id', '[0-9]+')
+    ->name('customer-update');
+
+    # DELETE:
+    Route::delete('/{id}', [CustomerController::class, 'destroy'])->where('id', '[0-9]+')
+    ->name('customer-destroy');
 });
