@@ -18,7 +18,7 @@ use App\Http\Controllers\BudgetController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::prefix('seller')->group(function(){
     # CREATE:

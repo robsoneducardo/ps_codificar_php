@@ -11,9 +11,18 @@
 <body>
     <header>
         <ul>
-            <li>Vendedores</li>
-            <li>Clientes</li>
-            <li>Orçamentos</li>
+            <li>
+                <a href="{{route('index')}}">Início</a>
+            </li>
+            <li>
+                <a href="{{route('seller-index')}}">Vendedores</a>
+            </li>
+            <li>
+                <a href="{{route('customer-index')}}">Clientes</a>
+            </li>
+            <li>
+                <a href="{{route('budget-index')}}">Orçamentos</a>
+            </li>
         </ul>
     </header>
     @yield('content')
