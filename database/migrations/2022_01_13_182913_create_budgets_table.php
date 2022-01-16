@@ -15,7 +15,14 @@ class CreateBudgetsTable extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->dateTime('created');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->text('description');
+            $table->float('value', 5, 2);
+//            $table->timestamps();
         });
     }
 

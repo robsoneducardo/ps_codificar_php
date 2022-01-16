@@ -14,4 +14,8 @@ class Seller extends Model
     ];
 
     public $timestamps = false;
+
+    public function budgets(){
+        return $this->hasMany(Budget::class);
+    }
 }

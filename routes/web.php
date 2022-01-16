@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\BudgetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,23 @@ Route::prefix('customer')->group(function(){
     # DELETE:
     Route::delete('/{id}', [CustomerController::class, 'destroy'])->where('id', '[0-9]+')
     ->name('customer-destroy');
+});
+
+Route::prefix('budget')->group(function(){
+    # CREATE:
+    // Route::get('/create', [BudgetController::class, 'create'])->name('budget-create');
+    Route::post('/', [BudgetController::class, 'store'])->name('budget-store');
+
+    # RETRIEVE:
+    Route::get('/', [BudgetController::class, 'index'])->name('budget-index');
+
+    # UPDATE:
+    // Route::get('edit/{id}', [BudgetController::class, 'edit'])->where('id', '[0-9]+')
+    // ->name('budget-edit');
+    Route::put('/{id}', [BudgetController::class, 'update'])->where('id', '[0-9]+')
+        ->name('budget-update');
+
+    # DELETE:
+    Route::delete('/{id}', [BudgetController::class, 'destroy'])->where('id', '[0-9]+')
+        ->name('budget-destroy');
 });
