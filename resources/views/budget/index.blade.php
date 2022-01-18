@@ -3,33 +3,35 @@
     <h1>Lista de Orçamentos</h1>
     <h2>Filtros</h2>
     <table>
-        <tr>
-            <td>Vendedor:</td>
-            <td>
-                <select name="vendedor" id="vendedor_id">
-                    <option value=0>Todos</option>
-                    @foreach($sellers as $seller)
-                        <option value={{$seller->id}}>{{$seller->name}}</option>
-                    @endforeach
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Cliente:</td>
-            <td>
-                <select name="cliente" id="cliente_id">
-                    <option value=0>Todos</option>
-                    @foreach($customers as $customer)
-                        <option value="{{$customer->id}}">{{$customer->name}}</option>
-                    @endforeach
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button class="submit">Filtrar</button>
-            </td>
-        </tr>
+        <form method="get" action="{{route("budget-index")}}">
+            <tr>
+                <td>Vendedor:</td>
+                <td>
+                    <select name="seller_id" id="seller_id">
+                        <option value=0>Todos</option>
+                        @foreach($sellers as $seller)
+                            <option value={{$seller->id}}>{{$seller->name}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Cliente:</td>
+                <td>
+                    <select name="customer_id" id="customer_id">
+                        <option value=0>Todos</option>
+                        @foreach($customers as $customer)
+                            <option value="{{$customer->id}}">{{$customer->name}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="submit">Filtrar</button>
+                </td>
+            </tr>
+        </form>
     </table>
     <table>
         <thead>
@@ -58,6 +60,11 @@
             </td>
         </tr>
         @endforeach
+        <p id="id_cliente_filtrado"></p>
     </table>
+    <script>
+        document.getElementById("id_cliente_filtrado").innerHTML = "o id filtrado é "
+        + document.getElementById('cliente_id').value;
+    </script>
 
 @endsection
