@@ -1,8 +1,11 @@
 @extends('layout.app')
 @section('content')
     <h1>Lista de Orçamentos</h1>
-    <h2>Filtros</h2>
-    <table>
+    <a href="{{route("budget-create")}}">Criar novo orçamento</a>
+    <table class="table">
+        <thead>
+            <th colspan="2">Filtros</th>
+        </thead>
         <form method="get" action="{{route("budget-index")}}">
             <tr>
                 <td>Vendedor:</td>
@@ -33,9 +36,9 @@
             </tr>
         </form>
     </table>
-    <table>
+    <table class="table table-striped">
         <thead>
-            <th>Data</th>
+            <th>Data/hora</th>
             <th>Vendedor</th>
             <th>Cliente</th>
             <th>Descrição</th>

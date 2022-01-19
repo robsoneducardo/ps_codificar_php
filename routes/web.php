@@ -60,7 +60,7 @@ Route::prefix('customer')->group(function(){
 
 Route::prefix('budget')->group(function(){
     # CREATE:
-    // Route::get('/create', [BudgetController::class, 'create'])->name('budget-create');
+    Route::get('/create', [BudgetController::class, 'create'])->name('budget-create');
     Route::post('/', [BudgetController::class, 'store'])->name('budget-store');
 
     # RETRIEVE:

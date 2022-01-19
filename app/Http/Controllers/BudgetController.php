@@ -26,4 +26,28 @@ class BudgetController extends Controller
             'customers' => $customers, 'sellers' => $sellers]);
 //        dd($request->seller_id);
     }
+
+    public function create(){
+        $sellers = Seller::all();
+        $customers = Customer::all();
+
+        return view('budget.create', ['sellers' => $sellers, 'customers' => $customers]);
+
+    }
+
+    public function store(Request $request){
+//        dd($request);
+//        Budget::create($request->all());
+//        dd($request->seller_id);
+//        dd($request->customer_id);
+        Budget::create([
+//            'customer_id' => $request->customer_id,
+            'created' => $request->created,
+            'customer_id' => "2",
+            'seller_id' => $request->seller_id,
+            'description' => $request->description,
+            'value' => $request->value,
+        ]);
+        return redirect()->route('budget-index');
+    }
 }

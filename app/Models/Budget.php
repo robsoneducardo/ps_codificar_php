@@ -12,6 +12,7 @@ class Budget extends Model
     protected $fillable = [
         'created',
         'seller_id',
+        'customer_id',
         'budget_id',
         'description',
         'value',
