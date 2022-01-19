@@ -10,20 +10,23 @@
 </head>
 <body>
     <header>
-        <ul>
-            <li>
-                <a href="{{route('index')}}">Início</a>
-            </li>
-            <li>
-                <a href="{{route('seller-index')}}">Vendedores</a>
-            </li>
-            <li>
-                <a href="{{route('customer-index')}}">Clientes</a>
-            </li>
-            <li>
-                <a href="{{route('budget-index')}}">Orçamentos</a>
-            </li>
-        </ul>
+{{--        <nav class="navbar navbar-dark bg-dark">--}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="{{route('index')}}"  class="navbar-brand">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('seller-index')}}" class="navbar-brand">Vendedores</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('customer-index')}}" class="navbar-brand">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('budget-index')}}" class="navbar-brand">Orçamentos</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     @yield('content')
 </body>

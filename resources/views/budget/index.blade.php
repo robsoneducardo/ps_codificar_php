@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
-    <h1>Lista de Orçamentos</h1>
-    <a href="{{route("budget-create")}}">Criar novo orçamento</a>
+{{--    <h1>Lista de Orçamentos</h1>--}}
+    <a href="{{route("budget-create")}}" class="btn btn-primary">Criar novo orçamento</a>
     <table class="table">
         <thead>
             <th colspan="2">Filtros</th>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button class="submit">Filtrar</button>
+                    <button class="btn btn-success">Filtrar</button>
                 </td>
             </tr>
         </form>
@@ -43,6 +43,7 @@
             <th>Cliente</th>
             <th>Descrição</th>
             <th>Valor</th>
+            <th colspan="2">Ações</th>
         </thead>
         @foreach($budgets as $budget)
         <tr>
@@ -60,6 +61,16 @@
             </td>
             <td>
                 {{$budget->value}}
+            </td>
+            <td>
+                <form action="{{route("budget-destroy", ['id' => $budget->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+            </td>
+            <td>
+                <a href="{{route("budget-index", ['id' => $budget->id])}}" class="btn btn-secondary">Editar</a>
             </td>
         </tr>
         @endforeach

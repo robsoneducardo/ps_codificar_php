@@ -18,7 +18,8 @@ class BudgetController extends Controller
         if($request->customer_id){
             $budgets = $budgets->where('customers.id', $request->customer_id);
         }
-        $budgets = $budgets->get();
+        $budgets = $budgets->get(['budgets.*', 'budgets.id as id']);
+//        dd($budgets);
 
         $sellers = Seller::all();
         $customers = Customer::all();
@@ -36,18 +37,18 @@ class BudgetController extends Controller
     }
 
     public function store(Request $request){
-//        dd($request);
-//        Budget::create($request->all());
-//        dd($request->seller_id);
-//        dd($request->customer_id);
         Budget::create([
-//            'customer_id' => $request->customer_id,
             'created' => $request->created,
-            'customer_id' => "2",
+            'customer_id' => $request->customer_id,
             'seller_id' => $request->seller_id,
             'description' => $request->description,
             'value' => $request->value,
         ]);
+        return redirect()->route('budget-index');
+    }
+
+    public function destroy($id){
+        Budget::where('id', $id)->delete();
         return redirect()->route('budget-index');
     }
 }
